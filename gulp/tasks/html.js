@@ -1,20 +1,13 @@
-import fileinclude from 'gulp-file-include';
+import fileInclude from 'gulp-file-include';
 import gulpHtmlImgWrapper from 'gulp-html-img-wrapper';
 import gulpVersionNumber from 'gulp-version-number';
+import { fileIncludeContent } from '../file-include-content.js';
 
 export function html() {
   return app.gulp
     .src(app.path.src.html)
-    .pipe(fileinclude())
-    .pipe(app.plugins.gulpReplace(/@img\//g, './img/'))
-    .pipe(
-      app.plugins.gulpIf(
-        app.isBuild,
-        gulpHtmlImgWrapper({
-          classMove: true,
-        })
-      )
-    )
+    .pipe(fileInclude({ context: fileIncludeContent }))
+    .pipe(app.plugins.gulpIf(app.isBuild, gulpHtmlImgWrapper()))
     .pipe(
       app.plugins.gulpIf(
         app.isBuild,
@@ -31,6 +24,7 @@ export function html() {
         })
       )
     )
+    .pipe(app.plugins.gulpReplace(/@images\//g, './images/'))
     .pipe(app.gulp.dest(app.path.build.html))
     .pipe(app.plugins.browserSync.stream());
 }

@@ -28,14 +28,17 @@ export const ttfToWoff = function () {
 };
 
 export const fontsStyle = function () {
-  let fontsFile = `${app.path.srcFolder}/scss/fonts.scss`;
+  let fontsFile = `${app.path.srcFolder}/scss/utils/fonts.scss`;
 
   fs.readdir(app.path.build.fonts, function (err, fontsFiles) {
     if (fontsFiles) {
       if (!fs.existsSync(fontsFile)) {
         fs.writeFile(fontsFile, '', cb);
+
+        let prevFontFace;
+
         for (let i = 0; i < fontsFiles.length; i++) {
-          let fontFileName = fontsFiles[i].split('.')[0];
+          const fontFileName = fontsFiles[i].split('.')[0];
           if (fontFileName !== undefined) {
             let fontName = fontFileName.split('-')[0]
               ? fontFileName.split('-')[0]
@@ -75,11 +78,13 @@ export const fontsStyle = function () {
                 break;
             }
 
-            fs.appendFile(
-              fontsFile,
-              `@font-face{\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`,
-              cb
-            );
+            const fontFace = `@font-face{\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`;
+
+            if (prevFontFace !== fontFace) {
+              fs.appendFile(fontsFile, fontFace, cb);
+            }
+
+            prevFontFace = fontFace;
           }
         }
       } else {

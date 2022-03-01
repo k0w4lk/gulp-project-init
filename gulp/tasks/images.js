@@ -26,7 +26,7 @@ export const images = function () {
       )
     )
     .pipe(app.gulp.dest(app.path.build.images))
-    .pipe(app.gulp.src(app.path.src.svg))
+    .pipe(app.gulp.src(app.path.src.nonconvertibleImages))
     .pipe(app.gulp.dest(app.path.build.images))
     .pipe(app.plugins.browserSync.stream());
 };

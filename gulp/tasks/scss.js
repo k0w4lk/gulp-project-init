@@ -12,7 +12,6 @@ export const scss = function () {
   return (
     app.gulp
       .src(app.path.src.scss, { sourcemaps: app.isDev })
-      .pipe(app.plugins.gulpReplace(/@img\//g, '../img/'))
       .pipe(sass())
       .pipe(app.plugins.gulpIf(app.isBuild, groupCssMediaQueries()))
       .pipe(
@@ -34,7 +33,7 @@ export const scss = function () {
           })
         )
       )
-      // uncomment below for create expanded css files
+      // create expanded css files
       // .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.gulpIf(app.isBuild, cleanCss()))
       .pipe(
@@ -42,6 +41,7 @@ export const scss = function () {
           extname: '.min.css',
         })
       )
+      .pipe(app.plugins.gulpReplace(/@images\//g, '../images/'))
       .pipe(app.gulp.dest(app.path.build.css))
       .pipe(app.plugins.browserSync.stream())
   );
