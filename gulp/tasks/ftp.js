@@ -1,11 +1,14 @@
-import { configFTP } from '../config/ftp.js';
 import vinylFTP from 'vinyl-ftp';
 import gulpUtil from 'gulp-util';
+import { appConfig } from '../config/app.js';
+import { configFTP } from '../config/ftp.js';
 
-export const ftp = function () {
+export const ftp = () => {
   configFTP.log = gulpUtil.log;
   const ftpConnect = vinylFTP.create(configFTP);
-  return app.gulp
-    .src(`${app.path.buildFolder}/**/*.*`, {})
-    .pipe(ftpConnect.dest(`/${app.path.ftp}/${app.path.rootFolder}`));
+  return appConfig.gulp
+    .src(`${appConfig.path.buildFolder}/**/*.*`, {})
+    .pipe(
+      ftpConnect.dest(`/${appConfig.path.ftp}/${appConfig.path.rootFolder}`),
+    );
 };

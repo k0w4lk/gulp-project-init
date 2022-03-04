@@ -1,36 +1,35 @@
 import fs from 'fs';
 import fonter from 'gulp-fonter-unx';
 import ttf2woff2 from 'gulp-ttf2woff2';
+import { appConfig } from '../config/app.js';
 
-export const otfToTtf = function () {
-  return app.gulp
-    .src(`${app.path.srcFolder}/fonts/*.otf`, {})
+export const otfToTtf = () =>
+  appConfig.gulp
+    .src(`${appConfig.path.srcFolder}/fonts/*.otf`, {})
     .pipe(
       fonter({
         formats: ['ttf'],
-      })
+      }),
     )
-    .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`));
-};
-
-export const ttfToWoff = function () {
-  return app.gulp
-    .src(`${app.path.srcFolder}/fonts/*.ttf`, {})
+    .pipe(appConfig.gulp.dest(`${appConfig.path.srcFolder}/fonts/`));
+export const ttfToWoff = () =>
+  appConfig.gulp
+    .src(`${appConfig.path.srcFolder}/fonts/*.ttf`, {})
     .pipe(
       fonter({
         formats: ['woff'],
-      })
+      }),
     )
-    .pipe(app.gulp.dest(`${app.path.build.fonts}`))
-    .pipe(app.gulp.src(`${app.path.srcFolder}/fonts/*.ttf`))
+    .pipe(appConfig.gulp.dest(`${appConfig.path.build.fonts}`))
+    .pipe(appConfig.gulp.src(`${appConfig.path.srcFolder}/fonts/*.ttf`))
     .pipe(ttf2woff2())
-    .pipe(app.gulp.dest(`${app.path.build.fonts}`));
-};
+    .pipe(appConfig.gulp.dest(`${appConfig.path.build.fonts}`));
 
-export const fontsStyle = function () {
-  let fontsFile = `${app.path.srcFolder}/scss/utils/fonts.scss`;
+export const fontsStyle = () => {
+  const fontsFile = `${appConfig.path.srcFolder}/scss/utils/fonts.scss`;
+  function cb() {}
 
-  fs.readdir(app.path.build.fonts, function (err, fontsFiles) {
+  fs.readdir(appConfig.path.build.fonts, (err, fontsFiles) => {
     if (fontsFiles) {
       if (!fs.existsSync(fontsFile)) {
         fs.writeFile(fontsFile, '', cb);
@@ -40,7 +39,7 @@ export const fontsStyle = function () {
         for (let i = 0; i < fontsFiles.length; i++) {
           const fontFileName = fontsFiles[i].split('.')[0];
           if (fontFileName !== undefined) {
-            let fontName = fontFileName.split('-')[0]
+            const fontName = fontFileName.split('-')[0]
               ? fontFileName.split('-')[0]
               : fontFileName;
             let fontWeight = fontFileName.split('-')[1]
@@ -88,13 +87,13 @@ export const fontsStyle = function () {
           }
         }
       } else {
+        // eslint-disable-next-line
         console.log(
-          'File scss/fonts.scss already exists. Delete it to update.'
+          'File scss/fonts.scss already exists. Delete it to update.',
         );
       }
     }
   });
 
-  return app.gulp.src(`${app.path.srcFolder}`);
-  function cb() {}
+  return appConfig.gulp.src(`${appConfig.path.srcFolder}`);
 };

@@ -1,32 +1,42 @@
 import webp from 'gulp-webp';
 import imagemin from 'gulp-imagemin';
+import { appConfig } from '../config/app.js';
 
-export const images = function () {
-  return app.gulp
-    .src(app.path.src.images)
-    .pipe(app.plugins.gulpNewer(app.path.build.images))
-    .pipe(app.plugins.gulpIf(app.isBuild, webp()))
-    .pipe(app.plugins.gulpIf(app.isBuild, app.gulp.dest(app.path.build.images)))
-    .pipe(app.plugins.gulpIf(app.isBuild, app.gulp.src(app.path.src.images)))
+export const images = () =>
+  appConfig.gulp
+    .src(appConfig.path.src.images)
+    .pipe(appConfig.plugins.gulpNewer(appConfig.path.build.images))
+    .pipe(appConfig.plugins.gulpIf(appConfig.isBuild, webp()))
     .pipe(
-      app.plugins.gulpIf(
-        app.isBuild,
-        app.plugins.gulpNewer(app.path.build.images)
-      )
+      appConfig.plugins.gulpIf(
+        appConfig.isBuild,
+        appConfig.gulp.dest(appConfig.path.build.images),
+      ),
     )
     .pipe(
-      app.plugins.gulpIf(
-        app.isBuild,
+      appConfig.plugins.gulpIf(
+        appConfig.isBuild,
+        appConfig.gulp.src(appConfig.path.src.images),
+      ),
+    )
+    .pipe(
+      appConfig.plugins.gulpIf(
+        appConfig.isBuild,
+        appConfig.plugins.gulpNewer(appConfig.path.build.images),
+      ),
+    )
+    .pipe(
+      appConfig.plugins.gulpIf(
+        appConfig.isBuild,
         imagemin({
           progressive: true,
           svgoPlugins: [{ removeViewBox: false }],
           interlaced: true,
           optimizationLevel: 3,
-        })
-      )
+        }),
+      ),
     )
-    .pipe(app.gulp.dest(app.path.build.images))
-    .pipe(app.gulp.src(app.path.src.nonconvertibleImages))
-    .pipe(app.gulp.dest(app.path.build.images))
-    .pipe(app.plugins.browserSync.stream());
-};
+    .pipe(appConfig.gulp.dest(appConfig.path.build.images))
+    .pipe(appConfig.gulp.src(appConfig.path.src.nonconvertibleImages))
+    .pipe(appConfig.gulp.dest(appConfig.path.build.images))
+    .pipe(appConfig.plugins.browserSync.stream());

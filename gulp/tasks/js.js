@@ -1,13 +1,14 @@
 import webpack from 'webpack-stream';
 import vinylNamed from 'vinyl-named';
+import { appConfig } from '../config/app.js';
 
-export const js = function () {
-  return app.gulp
-    .src(app.path.src.js, { sourcemaps: app.isDev })
+export const js = () =>
+  appConfig.gulp
+    .src(appConfig.path.src.js, { sourcemaps: appConfig.isDev })
     .pipe(vinylNamed())
     .pipe(
       webpack({
-        mode: app.isBuild ? 'production' : 'development',
+        mode: appConfig.isBuild ? 'production' : 'development',
         module: {
           rules: [
             {
@@ -26,9 +27,8 @@ export const js = function () {
             },
           ],
         },
-      })
+      }),
     )
-    .pipe(app.plugins.gulpReplace(/@images\//g, '../images/'))
-    .pipe(app.gulp.dest(app.path.build.js))
-    .pipe(app.plugins.browserSync.stream());
-};
+    .pipe(appConfig.plugins.gulpReplace(/@images\//g, '../images/'))
+    .pipe(appConfig.gulp.dest(appConfig.path.build.js))
+    .pipe(appConfig.plugins.browserSync.stream());

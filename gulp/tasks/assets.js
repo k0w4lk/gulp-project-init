@@ -1,5 +1,7 @@
+import { appConfig } from '../config/app.js';
+
 export function assets() {
-  return app.gulp
-    .src(app.path.src.assets)
-    .pipe(app.gulp.dest(app.path.build.assets));
+  return appConfig.gulp
+    .src(appConfig.path.src.assets)
+    .pipe(appConfig.gulp.dest(appConfig.path.build.assets));
 }

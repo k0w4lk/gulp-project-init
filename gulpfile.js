@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import { path } from './gulp/config/paths.js';
-import { plugins } from './gulp/config/plugins.js';
 import { assets } from './gulp/tasks/assets.js';
 import { otfToTtf, fontsStyle, ttfToWoff } from './gulp/tasks/fonts.js';
 import { ftp } from './gulp/tasks/ftp.js';
@@ -11,14 +10,6 @@ import { reset } from './gulp/tasks/reset.js';
 import { scss } from './gulp/tasks/scss.js';
 import { server } from './gulp/tasks/server.js';
 import { zip } from './gulp/tasks/zip.js';
-
-global.app = {
-  isBuild: process.argv.includes('--build'),
-  isDev: !process.argv.includes('--build'),
-  path,
-  gulp,
-  plugins,
-};
 
 function watcher() {
   gulp.watch(path.watch.assets, assets);

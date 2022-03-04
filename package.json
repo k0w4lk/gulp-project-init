@@ -1,14 +1,24 @@
 {
   "name": "gulp-package",
   "version": "1.0.0",
-  "description": "Gulp package for creating landings",
+  "description": "Gulp package for creating WEB sites and apps",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
     "dev": "gulp",
     "build": "gulp build --build",
     "zip": "gulp deployZIP --build",
-    "deploy": "gulp deployFTP --build"
+    "deploy": "gulp deployFTP --build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier",
+      "eslint"
+    ],
+    "*.{html,scss}": [
+      "prettier"
+    ]
   },
   "author": "kowalk",
   "license": "ISC",
@@ -16,6 +26,9 @@
     "browser-sync": "^2.27.7",
     "css-loader": "^6.6.0",
     "del": "^6.0.0",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
@@ -35,6 +48,9 @@
     "gulp-webp": "^4.0.1",
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
+    "prettier": "^2.5.1",
     "sass": "^1.49.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
