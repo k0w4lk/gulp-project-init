@@ -16,6 +16,14 @@
     "implicit-arrow-linebreak": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
-    "import/extensions": "off"
-  }
+    "import/extensions": "off",
+    "function-paren-newline": "off",
+    "no-undef": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "excludedFiles": "*.spec.js"
+    }
+  ]
 }
