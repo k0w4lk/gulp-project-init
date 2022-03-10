@@ -12,6 +12,13 @@
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
     "operator-linebreak": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "tabWidth": 2
+      }
+    ],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "implicit-arrow-linebreak": "off",
     "import/prefer-default-export": "off",
