@@ -19,8 +19,9 @@
         "tabWidth": 2
       }
     ],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-plusplus": "off",
     "implicit-arrow-linebreak": "off",
+    "no-param-reassign": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off"
