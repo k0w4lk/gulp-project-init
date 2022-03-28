@@ -8,7 +8,7 @@ export function html() {
   return appConfig.gulp
     .src(appConfig.path.src.html)
     .pipe(fileInclude({ context: fileIncludeContent }))
-    .pipe(appConfig.plugins.gulpIf(appConfig.isBuild, gulpHtmlImgWrapper()))
+    .pipe(gulpHtmlImgWrapper())
     .pipe(
       appConfig.plugins.gulpIf(
         appConfig.isBuild,
