@@ -1,7 +1,7 @@
 {
   "name": "gulp-package",
   "version": "1.0.0",
-  "description": "Gulp package for creating WEB sites and apps",
+  "description": "Gulp package for creating WEB sites and apps on UNIX",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
@@ -40,7 +40,7 @@
     "gulp-file-include": "^2.3.0",
     "gulp-fonter-unx": "^0.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-html-img-wrapper": "^2.1.3",
+    "gulp-html-img-wrapper": "^3.0.1",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^8.0.0",
     "gulp-newer": "^1.4.0",
