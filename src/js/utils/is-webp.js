@@ -7,6 +7,7 @@ export function isWebp() {
     webP.onload = onEvent;
     webP.onerror = onEvent;
     webP.src =
+      // eslint-disable-next-line max-len
       'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
   }
 
