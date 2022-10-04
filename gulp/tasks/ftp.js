@@ -1,10 +1,10 @@
 import vinylFTP from 'vinyl-ftp';
-import gulpUtil from 'gulp-util';
+import fancyLog from 'fancy-log';
 import { appConfig } from '../config/app.js';
 import { configFTP } from '../config/ftp.js';
 
 export const ftp = () => {
-  configFTP.log = gulpUtil.log;
+  configFTP.log = fancyLog;
   const ftpConnect = vinylFTP.create(configFTP);
   return appConfig.gulp
     .src(`${appConfig.path.buildFolder}/**/*.*`, {})

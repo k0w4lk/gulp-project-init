@@ -6,25 +6,10 @@ export const images = () =>
   appConfig.gulp
     .src(appConfig.path.src.images)
     .pipe(appConfig.plugins.gulpNewer(appConfig.path.build.images))
-    .pipe(appConfig.plugins.gulpIf(appConfig.isBuild, webp()))
-    .pipe(
-      appConfig.plugins.gulpIf(
-        appConfig.isBuild,
-        appConfig.gulp.dest(appConfig.path.build.images),
-      ),
-    )
-    .pipe(
-      appConfig.plugins.gulpIf(
-        appConfig.isBuild,
-        appConfig.gulp.src(appConfig.path.src.images),
-      ),
-    )
-    .pipe(
-      appConfig.plugins.gulpIf(
-        appConfig.isBuild,
-        appConfig.plugins.gulpNewer(appConfig.path.build.images),
-      ),
-    )
+    .pipe(webp())
+    .pipe(appConfig.gulp.dest(appConfig.path.build.images))
+    .pipe(appConfig.gulp.src(appConfig.path.src.images))
+    .pipe(appConfig.plugins.gulpNewer(appConfig.path.build.images))
     .pipe(
       appConfig.plugins.gulpIf(
         appConfig.isBuild,

@@ -1,0 +1,7 @@
+{
+  "transform": { "\\.[jt]sx?$": "babel-jest" },
+  "verbose": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": ["src/**/*.js"],
+  "testEnvironment": "jsdom"
+}
