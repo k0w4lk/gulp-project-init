@@ -35,6 +35,7 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-file-include": "^2.3.0",
     "gulp-fonter-unx": "^0.3.0",
+    "gulp-format-html": "^1.2.5",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-html-img-wrapper": "^4.0.1",
     "gulp-if": "^3.0.0",
