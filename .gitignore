@@ -2,7 +2,6 @@
 
 /dist
 /node_modules
-/coverage
 
 # Project files
 *.zip

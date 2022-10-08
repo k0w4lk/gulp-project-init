@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "dev": "gulp",
-    "test": "jest",
     "build": "gulp build --build",
     "zip": "gulp deployZIP --build",
     "deploy": "gulp deployFTP --build",
@@ -24,10 +23,6 @@
   "author": "kowalk",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
-    "babel-jest": "^27.5.1",
     "browser-sync": "^2.27.7",
     "css-loader": "^6.6.0",
     "del": "^6.0.0",
@@ -54,7 +49,6 @@
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
     "husky": "^7.0.4",
-    "jest": "^27.5.1",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "sass": "^1.49.0",
