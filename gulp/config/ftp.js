@@ -1,4 +1,4 @@
-export let configFTP = {
+export const configFTP = {
   host: '',
   user: '',
   password: '',

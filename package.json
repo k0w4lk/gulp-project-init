@@ -9,15 +9,18 @@
     "build": "gulp build --build",
     "zip": "gulp deployZIP --build",
     "deploy": "gulp deployFTP --build",
+    "eslint:check": "eslint 'src/**/*.js'",
+    "eslint:fix": "eslint --fix 'src/**/*.js'",
+    "prettier:check": "prettier --check 'src/**/*.{html,scss,js}'",
+    "prettier:write": "prettier --write 'src/**/*.{html,scss,js}'",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier",
-      "eslint"
+    "src/**/*.js": [
+      "eslint --fix"
     ],
-    "*.{html,scss}": [
-      "prettier"
+    "src/**/*.{html,scss,js}": [
+      "prettier --write"
     ]
   },
   "author": "k0w4lk",
@@ -26,9 +29,9 @@
     "browser-sync": "^2.27.7",
     "css-loader": "^6.6.0",
     "del": "^6.0.0",
-    "eslint": "^8.10.0",
+    "eslint": "^8.25.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import": "^2.26.0",
     "fancy-log": "^2.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -51,7 +54,7 @@
     "gulp-zip": "^5.1.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
-    "prettier": "^2.5.1",
+    "prettier": "^2.7.1",
     "sass": "^1.49.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
