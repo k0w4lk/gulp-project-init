@@ -1,7 +1,7 @@
 {
   "name": "gulp-package",
   "version": "1.0.0",
-  "description": "Gulp package for creating WEB sites and apps on UNIX",
+  "description": "Gulp package for creating web-sites and simple web-applications",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
@@ -20,7 +20,7 @@
       "prettier"
     ]
   },
-  "author": "kowalk",
+  "author": "k0w4lk",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.27.7",
