@@ -1,10 +1,10 @@
-import dartSass from 'sass';
-import gulpSass from 'gulp-sass';
-import rename from 'gulp-rename';
-import cleanCss from 'gulp-clean-css';
-import webpCss from 'gulp-webpcss';
 import autoprefixer from 'gulp-autoprefixer';
+import cleanCss from 'gulp-clean-css';
 import groupCssMediaQueries from 'gulp-group-css-media-queries';
+import rename from 'gulp-rename';
+import gulpSass from 'gulp-sass';
+import webpCss from 'gulp-webpcss';
+import dartSass from 'sass';
 import { appConfig } from '../config/app.js';
 
 const sass = gulpSass(dartSass);
@@ -20,8 +20,8 @@ export const scss = () =>
         webpCss({
           webpClass: '.webp',
           noWebpClass: '.no-webp',
-        }),
-      ),
+        })
+      )
     )
     .pipe(
       appConfig.plugins.gulpIf(
@@ -30,17 +30,14 @@ export const scss = () =>
           grid: true,
           overrideBrowserslist: ['last 3 versions'],
           cascade: true,
-        }),
-      ),
+        })
+      )
     )
-    // create expanded css files
-    // .pipe(appConfig.gulp.dest(appConfig.path.build.css))
     .pipe(appConfig.plugins.gulpIf(appConfig.isBuild, cleanCss()))
     .pipe(
       rename({
         extname: '.min.css',
-      }),
+      })
     )
-    .pipe(appConfig.plugins.gulpReplace(/@images\//g, '../images/'))
     .pipe(appConfig.gulp.dest(appConfig.path.build.css))
     .pipe(appConfig.plugins.browserSync.stream());

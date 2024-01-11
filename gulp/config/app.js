@@ -8,4 +8,5 @@ export const appConfig = {
   path,
   gulp,
   plugins,
+  langs: ['en', 'de'],
 };

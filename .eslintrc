@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "comma-dangle": ["off"],
     "implicit-arrow-linebreak": ["off"],
     "import/extensions": ["error", { "js": "always" }],
     "import/no-extraneous-dependencies": ["off"],
